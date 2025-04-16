@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NPC Remover Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="npc-status" class="status-container">
+        <div class="status-icon"></div>
+        <span class="status-text">NPC Removal: Enabled</span>
+    </div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "updateStatus") {
+                const statusText = document.querySelector('.status-text');
+                const statusContainer = document.getElementById('npc-status');
+                
+                if (event.data.active) {
+                    statusText.textContent = 'NPC Removal: Enabled';
+                    statusContainer.classList.remove('disabled');
+                    statusContainer.classList.add('enabled');
+                } else {
+                    statusText.textContent = 'NPC Removal: Disabled';
+                    statusContainer.classList.remove('enabled');
+                    statusContainer.classList.add('disabled');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
