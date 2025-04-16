@@ -1,0 +1,74 @@
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Contenedor principal */
+.status-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Icono de estado */
+.status-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff3333;
+    transition: background-color 0.3s ease;
+}
+
+/* Texto de estado */
+.status-text {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Estados */
+.status-container.enabled .status-icon {
+    background: #33ff33;
+    box-shadow: 0 0 10px rgba(51, 255, 51, 0.5);
+}
+
+.status-container.disabled .status-icon {
+    background: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+/* Animación al cambiar de estado */
+.status-container.enabled,
+.status-container.disabled {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Efecto hover */
+.status-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
